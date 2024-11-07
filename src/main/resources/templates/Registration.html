@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"],
+        .login-container input[type="tel"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button {
+            width: 50%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+        .login-container .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .login-container .forgot-password a {
+            color: rgb(0, 128, 255);
+            text-decoration: none;
+        }
+        .login-container .forgot-password a:hover {
+            text-decoration: underline;
+        }
+         .error {
+            color: red;
+            text-align: center;  /* Center the error message */
+            margin-bottom: 15px; /* Add some space between the error and the form */
+        }
+    </style>
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var errorMessage = document.getElementById("passwordError");
+
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "Passwords do not match!";
+                return false;
+            }
+            errorMessage.textContent = ""; // Clear the error message if passwords match
+            return true;
+        }
+    </script>
+</head>
+<body>
+<div class="login-container">
+    <h2>Registration Form</h2>
+     <div th:if="${error != null}" class="error">
+           <p th:text="${error}"></p>
+       </div>
+    <form th:action="@{/register}" th:object="${users}" method="POST" onsubmit="return validatePassword()">
+        <label for="name">Name</label>
+        <input type="text" id="name" th:field="*{name}" required>
+        <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+
+        <label for="phoneNumber">Phone Number</label>
+        <input type="tel" id="phoneNumber" th:field="*{phoneNumber}" required>
+        <div class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+
+        <label for="password">Create Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" required th:field="*{pwd}">
+        <div class="error" th:if="${#fields.hasErrors('pwd')}" th:errors="*{pwd}"></div>
+        <div id="passwordError" class="error"></div>
+
+        <br><br>
+        <button type="submit">Register</button>
+                    <div class="forgot-password">
+            	<a th:href="@{/login}">Already have an Account?Please login</a><br>
+            	<br>
+               
+            </div>
+        
+    </form>
+</div>
+</body>
+</html>

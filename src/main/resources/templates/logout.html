@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .logout-message {
+            font-size: 24px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/logout}"  th:object="${message}" method="Post">
+    <div class="logout-message">
+        <p th:text="${message}"></p>
+    </div>
+    <a th:href="@{/login}">Return to Login</a> 
+    </form>
+</body>
+</html>

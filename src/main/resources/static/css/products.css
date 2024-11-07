@@ -1,0 +1,595 @@
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0277bd;
+}
+
+.search-bar {
+    display: flex;
+    flex-grow: 1;
+    margin: 0 20px;
+    max-width: 600px;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    background: #0277bd;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 5px;
+    color: white;
+}
+
+.categories button {
+    background: #0277bd;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 5px;
+    color: white;
+}
+
+/* Right side buttons */
+.right-icons {
+    display: flex;
+    align-items: center;
+}
+
+.right-icons .icon {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.right-icons .icon i {
+    font-size: 20px;
+    color: #0277bd;
+}
+
+     /* Full-Page Categories Dropdown (No Scrolling) */
+.categories-dropdown {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    z-index: 1000;
+    color: white;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevents scrolling */
+}
+
+.categories-dropdown .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Category Grid Layout */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-gap: 40px;
+    justify-items: center;
+    align-items: start;
+}
+
+/* Each Main Category */
+.category-item {
+    text-align: center;
+    color: white;
+}
+
+.category-item i {
+    font-size: 40px;
+    color: #1f93e0;
+    margin-bottom: 10px;
+}
+
+.category-item a {
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.nested-dropdown-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.nested-dropdown-content a {
+    color: #ffb400;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.nested-dropdown-content a:hover {
+    color: #080d0f;
+}
+
+
+/* Basic styling for the navigation bar */
+nav {
+    background-color: white; /* Cyan background color */
+    padding: 5px 0;
+}
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+li {
+    font-size: 16px;
+    padding: 10px 15px;
+    position: relative;
+}
+li a {
+    color: black; /* Set text color to black */
+    text-decoration: none;
+    
+}
+
+      /* Slightly darker background on hover */
+
+
+/* Dropdown menu styles */
+.dropdown {
+ 
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content, .nested-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgb(255, 255, 255);
+    z-index: 1;
+}
+
+.dropdown-content a, .nested-dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover, .nested-dropdown-content a:hover {
+    background-color: none;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content, .nested-dropdown:hover .nested-dropdown-content {
+    display: block;
+    
+}
+
+.dropdown > a::after, .nested-dropdown > a::after {
+    content: " ▼"; /* Caret symbol */
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* Adjust nested dropdown position */
+.nested-dropdown-content {
+    left: 100%;
+    top: 0;
+}
+.center {
+display: flex;
+justify-content: flex-end; /* Aligns items to the right */
+align-items: center;
+gap: 15px; /* Adds space between the buttons */
+}
+select {
+padding: 10px;
+font-size: 16px;
+border: 2px solid #007bff;
+border-radius: 5px;
+background-color: #f0f0f0;
+color: #333;
+}
+
+
+
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.filters {
+    width: 20%;
+    background-color: #fff;
+    padding: 20px;
+    border-right: 2px solid #e0e0e0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.filter-group h4 {
+    margin-bottom: 10px;
+}
+
+.products {
+    width: 80%;
+    padding-left: 20px;
+}
+
+/* HR styling */
+hr {
+    border: none;
+    border-top: 1px solid #e0e0e0; /* Light grey line */
+    margin: 20px 0; /* Add spacing around the line */
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.filter-group img {
+    margin-left: 10px; /* Adds some spacing between the checkbox and the image */
+    width: 50px; /* Adjust width as needed */
+    height: auto;
+}
+
+/* Add space between checkbox and text */
+.filter-group label input {
+    margin-right: 10px; /* Adjust the space (10px) as needed */
+}
+
+
+
+/* Product grid container */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Product image container */
+.product-image-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Maintain square aspect ratio */
+    overflow: hidden;
+}
+
+/* Ensure only the first image is visible initially */
+.product-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* On hover, hide the first image and show the second */
+.product-image-container img.first-image {
+    opacity: 1;
+}
+
+.product-image-container img.second-image {
+    opacity: 0;
+}
+
+.product-image-container:hover img.first-image {
+    opacity: 0;
+}
+
+.product-image-container:hover img.second-image {
+    opacity: 1;
+}
+
+/* Additional CSS for product information, wishlist, etc. */
+.offer-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #ff5050;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 10; /* Make sure it stays above the image */
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    color: #ddd;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10; /* Make sure it stays above the image */
+}
+
+.wishlist-btn:hover {
+    color: red;
+}
+
+.product-name {
+    display: -webkit-box; /* Use flexbox for the text container */
+    -webkit-box-orient: vertical; /* Set box orientation to vertical */
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflowed text */
+    margin: 10px 0; /* Add some margin for spacing */
+    font-size: 14px; /* Adjust font size if needed */
+    color: #333; /* Color of the product name */
+    font-weight: bold;
+}
+
+
+.product-price {
+            color: #388e3c;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+/* Add to Cart button */
+.add-to-cart-btn {
+            background-color: #1976d2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+.add-to-cart-btn:hover {
+    background-color: #0056b3;
+}
+
+
+.star {
+    color: #ddd; /* Default color for empty stars */
+    font-size: 16px; /* Adjust size as needed */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.star.filled {
+    color: #ffa41c; /* Gold color for filled stars */
+}
+
+
+
+
+
+
+
+
+
+
+/* Footer styles */
+.footer {
+    background-color: #222; /* Footer background color */
+    padding: 10px 0; /* Vertical padding */
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; /* Center text in case of small icons */
+    border-top: 4px solid #007bff;
+}
+
+.socialIcons {
+    display: flex; /* Flexbox for inline elements */
+    justify-content: center; /* Center the icons */
+    gap: 15px; /* Space between the icons */
+}
+
+.socialIcons a {
+    color: #fff;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out, color 0.3s;
+}
+
+.socialIcons a:hover {
+    color: #007bff; /* Hover color */
+    transform: scale(1.2); /* Scale effect on hover */
+}
+
+/* Footer Sections */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex-basis: 20%;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    color: #007bff;
+    font-size: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.footer-section h3::after {
+    content: '';
+    width: 50px;
+    height: 2px;
+    background-color: #007bff;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+/* Sitemap Categories */
+.sitemap-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sitemap-btn i {
+    margin-left: 5px;
+}
+
+#sitemap-categories {
+    list-style: none;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+#sitemap-categories li {
+    margin-bottom: 10px;
+}
+
+#sitemap-categories li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#sitemap-categories li a:hover {
+    color: #007bff;
+}
+
+/* Links Styling */
+.footer-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #007bff;
+}
+
+/* Newsletter */
+.footer-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section form input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-section form button {
+    background-color: #007bff;
+    color: white;
+    border: #222;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.footer-section form button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer Bottom Flexbox */
+.footerBottom {
+    display: flex;
+    justify-content: center; /* Align content to the right */
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+    color: #222;
+}
+
+.footerBottom-right {
+    display: flex;
+    align-items: center; /* Align text and icons in the same line */
+    gap: 20px; /* Space between the text and payment icons */
+}
+
+.footerBottom p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Payment Methods Styling */
+.payment-methods {
+    display: flex;
+    gap: 10px; /* Space between the payment method icons */
+}
+
+.payment-methods img {
+    width: 40px; /* Set the width of payment icons */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.payment-methods img:hover {
+    transform: scale(1.1); /* Slight hover effect */
+}

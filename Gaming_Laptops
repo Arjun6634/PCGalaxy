@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Laptops</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gaming Laptops</h1>
+        <p>Explore the best gaming laptops for ultimate performance.</p>
+    </header>
+    <!-- Add content specific to gaming laptops here -->
+</body>
+</html>

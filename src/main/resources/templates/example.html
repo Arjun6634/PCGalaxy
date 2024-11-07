@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Filters</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+       * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.filters {
+    width: 20%;
+    background-color: #fff;
+    padding: 20px;
+    border-right: 2px solid #e0e0e0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.filter-group h4 {
+    margin-bottom: 10px;
+}
+
+.products {
+    width: 80%;
+    padding-left: 20px;
+}
+
+/* HR styling */
+hr {
+    border: none;
+    border-top: 1px solid #e0e0e0; /* Light grey line */
+    margin: 20px 0; /* Add spacing around the line */
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.filter-group img {
+    margin-left: 10px; /* Adds some spacing between the checkbox and the image */
+    width: 50px; /* Adjust width as needed */
+    height: auto;
+}
+
+/* Add space between checkbox and text */
+.filter-group label input {
+    margin-right: 10px; /* Adjust the space (10px) as needed */
+}
+
+
+
+/* Product grid container */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Product image container */
+.product-image-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Maintain square aspect ratio */
+    overflow: hidden;
+}
+
+/* Ensure only the first image is visible initially */
+.product-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* On hover, hide the first image and show the second */
+.product-image-container img.first-image {
+    opacity: 1;
+}
+
+.product-image-container img.second-image {
+    opacity: 0;
+}
+
+.product-image-container:hover img.first-image {
+    opacity: 0;
+}
+
+.product-image-container:hover img.second-image {
+    opacity: 1;
+}
+
+/* Additional CSS for product information, wishlist, etc. */
+.offer-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #ff5050;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 10; /* Make sure it stays above the image */
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    color: #ddd;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10; /* Make sure it stays above the image */
+}
+
+.wishlist-btn:hover {
+    color: red;
+}
+
+.product-name {
+    display: -webkit-box; /* Use flexbox for the text container */
+    -webkit-box-orient: vertical; /* Set box orientation to vertical */
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflowed text */
+    margin: 10px 0; /* Add some margin for spacing */
+    font-size: 14px; /* Adjust font size if needed */
+    color: #333; /* Color of the product name */
+    font-weight: bold;
+}
+
+
+.product-price {
+            color: #388e3c;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+/* Add to Cart button */
+.add-to-cart-btn {
+            background-color: #1976d2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+.add-to-cart-btn:hover {
+    background-color: #0056b3;
+}
+
+
+.star {
+    color: #ddd; /* Default color for empty stars */
+    font-size: 16px; /* Adjust size as needed */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.star.filled {
+    color: #ffa41c; /* Gold color for filled stars */
+}
+
+
+    </style>
+</head>
+<body>
+    <h1 style="background-color: black; color: white; text-align: center;"> Laptops</h1>
+    <div class="container">
+        <!-- Filter Section -->
+        <aside class="filters">
+
+            <img src="../static/image/laptop9-600x315w.jpg" alt="laptop" style="width:200px; height:auto;">
+            <h3>Filters</h3><br>
+            
+            <div class="filter-group">
+                <h4>Price</h4>
+                <label>₹ <span id="min-price">29915</span> - ₹ <span id="max-price">199831</span></label><br>
+                <input type="range" min="29915" max="199831" id="price-range">
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Brands</h4>
+                
+                <!-- DELL Brand -->
+                <label>
+                    <input type="checkbox" value="DELL">
+                    <img src="../static/image/dell.jpg" alt="DELL" style="width:50px; height:auto;">
+                </label><br>
+            
+                <!-- MSI Brand -->
+                <label>
+                    <input type="checkbox" value="MSI">
+                    <img src="../static/image/msi.jpg" alt="MSI" style="width:50px; height:auto;">
+                </label><br>
+            
+                <!-- HP Brand -->
+                <label>
+                    <input type="checkbox" value="HP">
+                    <img src="../static/image/hp.jpg" alt="HP" style="width:50px; height:auto;">
+                </label><br>
+                <!-- ASUS Brand -->
+                <label>
+                    <input type="checkbox" value="ASUS">
+                    <img src="../static/image/asus.jpg" alt="ASUS" style="width:50px; height:auto;">
+                </label><br>
+                <!-- SUMSONG Brand -->
+                <label>
+                    <input type="checkbox" value="SUMSONG">
+                    <img src="../static/image/samsung-150x150.jpg" alt="SUMSONG" style="width:50px; height:auto;">
+                </label><br>
+            </div>
+            
+            <hr>
+            <div class="filter-group">
+                <h4>Graphics Processor</h4>
+                <label><input type="checkbox" value="16 GB">  16 GB</label><br>
+                <label><input type="checkbox" value="4 GB">  4 GB</label><br>
+                <label><input type="checkbox" value="8 GB">  8 GB</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Processor Type</h4>
+                <label><input type="checkbox" value="AMD Ryzen 5">  AMD Ryzen 5</label><br>
+                <label><input type="checkbox" value="Intel Core i3">  Intel Core i3</label><br>
+                <label><input type="checkbox" value="Intel Core i5">  Intel Core i5</label><br>
+                <label><input type="checkbox" value="Intel Core i7">  Intel Core i7</label><br>
+                <label><input type="checkbox" value="Intel Core i9">  Intel Core i9</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Platform</h4>
+                <label><input type="checkbox" value="AMD RYZEN 5"> AMD RYZEN 5</label><br>
+                <label><input type="checkbox" value="AMD RYZEN 7"> AMD RYZEN 7</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Supported Memory Type</h4>
+                <label><input type="checkbox" value="DDR4"> DDR4</label><br>
+                <label><input type="checkbox" value="DDR5"> DDR5</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Manufacturer</h4>
+                <label><input type="checkbox" value="MSI"> MSI</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>GPU</h4>
+                <label><input type="checkbox" value="RTX 2050"> RTX 2050</label><br>
+                <label><input type="checkbox" value="RTX 3050"> RTX 3050</label><br>
+                <label><input type="checkbox" value="RTX 3050 TI"> RTX 3050 TI</label><br>
+                <label><input type="checkbox" value="RTX 3080 TI"> RTX 3080 TI</label><br>
+                <label><input type="checkbox" value="RTX 4060"> RTX 4060</label><br>
+                <label><input type="checkbox" value="RX 6500M"> RX 6500M</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Operating System</h4>
+                <label><input type="checkbox" value="Windows 10"> Windows 10</label><br>
+                <label><input type="checkbox" value="Windows 11"> Windows 11</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Screen Size</h4>
+                <label><input type="checkbox" value="14 inch"> 14 inch</label><br>
+                <label><input type="checkbox" value="15.6 inch"> 15.6 inch</label><br>
+                <label><input type="checkbox" value="17.3 inch"> 17.3 inch</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Storage Type</h4>
+                <label><input type="checkbox" value="SSD"> SSD</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Memory Size</h4>
+                <label><input type="checkbox" value="8 GB"> 8 GB</label><br>
+                <label><input type="checkbox" value="16 GB"> 16 GB</label><br>
+                <label><input type="checkbox" value="32 GB"> 32 GB</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Storage Size</h4>
+                <label><input type="checkbox" value="512 GB"> 512 GB</label><br>
+                <label><input type="checkbox" value="1 TB"> 1 TB</label><br>
+                <label><input type="checkbox" value="2 TB"> 2 TB</label><br>
+            </div>
+            <hr>
+        </aside>
+        
+        <!-- Products Section -->
+        <section class="products">
+            <img src="../static/image/laptop8.jpg" alt="laptop" style="width:1020px; height:auto;">
+            <h1 style="background-color: white; color: black; text-align: center;"> Choose the best Laptops in India </h1><br>
+            <div class="product-grid" id="productGrid">
+
+                
+                <!-- Product items will be dynamically displayed here -->
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+       // Sample array of product data
+const products = [
+    { id: 1, name: "DELL INSPIRON 15-3520 [CI3-1215U 12TH GEN/8GB DDR4/512GB SSD/WI]", price: 35300, originalPrice: 65053, brand: "DELL", processor: "Intel Core i5", gpu: "RTX 3050", memorySize: "16 GB", storageSize: "1 TB", image: "../static/image/1-250x250_1 copy.jpg", hoverImage: "../static/image/2-250x250_4 copy.jpg", rating: 4 },
+    { id: 2, name: "DELL INSPIRON 15-3520 [CI3-1215U 12TH GEN/8GB DDR4/512GB SSD/WIN", price: 37800, originalPrice: 68053, brand: "DELL", processor: "Intel Core i3", gpu: "Intel UHD Graphics", memorySize: "8 GB", storageSize: "2 TB", image: "../static/image/1-250x250_3 copy.jpg", hoverImage: "../static/image/5-250x250_2 copy.jpg", rating: 5 },
+    { id: 3, name: "MSI 15 A12UCX 265IN CYBORG [CI5-12450H 12TH GEN/8GB DDR4/512GB SSD/WIN11 HOME]", price: 51800, originalPrice: 86990, brand: "MSI", processor: "Intel Core i7", gpu: "RTX 3050 TI", memorySize: "16 GB", storageSize: "512 GB", image: "../static/image/1-250x250 copy.jpg", hoverImage: "../static/image/2-250x250_2 copy.jpg", rating: 3 },
+    { id: 4, name: "HP PAVILION 15-EG3027TU [CI5-1340P 13TH GEN/16GB DDR5/512GB SSD/WIN11]", price: 67300, originalPrice: 85965, brand: "HP", processor: "Intel Core i9", gpu: "RTX 4060", memorySize: "32 GB", storageSize: "1 TB", image: "../static/image/1-250x250w_3 copy.jpg", hoverImage: "../static/image/2-250x250w_2 copy.jpg", rating: 5 },
+    { id: 5, name: "HP PAV 14-DV2014TU [CI5-1235U 12TH GEN/16GB DDR4/512GB SSD/NO DVD/WIN11 HOME]", price: 57800, originalPrice: 75990, brand: "HP", processor: "Intel Core i5", gpu: "RTX 3050", memorySize: "16 GB", storageSize: "1 TB", image: "../static/image/dv2014tu-01-250x250.jpg", hoverImage: "../static/image/dv2014tu-04-250x250.jpg", rating: 4 },
+    { id: 6, name: "HP 15-FD0018TU [CI3-1315U 13TH GEN/8GB DDR4/512GB SSD/WIN11 HOME]", price: 46800, originalPrice: 52273, brand: "HP", processor: "AMD Ryzen 5", gpu: "RTX 3080 TI", memorySize: "32 GB", storageSize: "2 TB", image: "../static/image/1-250x250w copy.jpg", hoverImage: "../static/image/2-250x250w copy.jpg", rating: 5 },
+    { id: 7, name: "MSI GS66 11UH [CI7-11800H 11TH GEN/16GB DDR4/2TB SSD/NO DVD/WIN10 HOME]", price: 201300, originalPrice: 299000, brand: "MSI", processor: "Intel Core i7", gpu: "RTX 3050 TI", memorySize: "16 GB", storageSize: "512 GB", image: "../static/image/1024-250x250w.jpg", hoverImage: "../static/image/1024(2)-500x500w.jpg", rating: 3 },
+    { id: 8, name: "MSI GS66 10UE [CI7-10870H 10TH GEN/16GB DDR4/1TB SSD/NO DVD/WIN10 HOME]", price: 130800, originalPrice: 223990, brand: "MSI", processor: "Intel Core i9", gpu: "RTX 4060", memorySize: "32 GB", storageSize: "1 TB", image: "../static/image/1-250x250w_4 copy.jpg", hoverImage: "../static/image/5-250x250w copy.jpg", rating: 5 },
+    // Add more products as needed
+];
+
+// Function to generate star ratings based on rating value
+function generateRatingStars(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        stars += `
+            <span class="star ${i <= rating ? 'filled' : ''}">★</span>
+        `;
+    }
+    return stars;
+}
+
+// Function to format the price with commas
+function formatPrice(price) {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Render products dynamically
+function displayProducts(filteredProducts) {
+    const productGrid = document.getElementById("productGrid");
+    productGrid.innerHTML = ""; // Clear existing products
+
+    filteredProducts.forEach(product => {
+        const discount = ((product.originalPrice - product.price) / product.originalPrice * 100).toFixed(0); // Calculate discount percentage
+
+        const productItem = `
+            <div class="product-card">
+                <div class="offer-tag">${discount}% OFF</div>
+                <a href="wishlist.html" class="wishlist-btn">&#x2764;</a>
+
+                <div class="product-image-container">
+                    <!-- Link the product image to the details page with product ID -->
+                    <a href="product-details.html?id=${product.id}">
+                        <img src="${product.image}" alt="${product.name}" class="product-image first-image">
+                        <img src="${product.hoverImage}" alt="${product.name}" class="product-image second-image"> <!-- Ensure proper class for hover -->
+                    </a>
+                </div>
+
+                <!-- Link the product name to the details page with product ID -->
+                <a href="product-details.html?id=${product.id}" class="product-name">${product.name}</a>
+
+                <div class="ratings">
+                    ${generateRatingStars(product.rating)} <!-- Dynamic star ratings -->
+                </div>
+
+                <div class="product-price">
+                    ₹${formatPrice(product.price)} <span class="old-price">₹${formatPrice(product.originalPrice)}</span>
+                </div>
+
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        `;
+        productGrid.innerHTML += productItem;
+    });
+}
+
+// Initially display all products
+displayProducts(products);
+
+// Price filter logic
+const priceRange = document.getElementById('price-range');
+const minPriceDisplay = document.getElementById('min-price');
+const maxPriceDisplay = document.getElementById('max-price');
+
+priceRange.addEventListener('input', () => {
+    const selectedPrice = priceRange.value;
+
+    // Update the displayed max price
+    maxPriceDisplay.textContent = formatPrice(selectedPrice);
+
+    // Filter products based on the price range
+    const filteredProducts = products.filter(product => product.price >= 29915 && product.price <= selectedPrice);
+
+    // Display filtered products
+    displayProducts(filteredProducts);
+});
+
+
+ // Filter logic
+ document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const selectedBrands = Array.from(document.querySelectorAll('input[value^="DELL"]:checked, input[value^="MSI"]:checked, input[value^="HP"]:checked, input[value^="ASUS"]:checked, input[value^="SAMSONG"]:checked')).map(input => input.value);
+                const selectedProcessors = Array.from(document.querySelectorAll('input[value^="Intel Core"]:checked, input[value^="AMD Ryzen"]:checked, input[value^="Intel Core i3"]:checked')).map(input => input.value);
+                const selectedGPUs = Array.from(document.querySelectorAll('input[value^="RTX"]:checked, input[value^="Intel UHD Graphics"]:checked')).map(input => input.value);
+                const selectedPlatforms = Array.from(document.querySelectorAll('input[value^="AMD RYZEN"]:checked')).map(input => input.value);
+                const selectedMemoryTypes = Array.from(document.querySelectorAll('input[value^="DDR"]:checked')).map(input => input.value);
+                const selectedOS = Array.from(document.querySelectorAll('input[value^="Windows"]:checked')).map(input => input.value);
+                const selectedScreenSizes = Array.from(document.querySelectorAll('input[value$="inch"]:checked')).map(input => input.value);
+                const selectedStorageTypes = Array.from(document.querySelectorAll('input[value^="SSD"]:checked')).map(input => input.value);
+                const selectedMemorySizes = Array.from(document.querySelectorAll('input[value$="GB"]:checked')).map(input => input.value);
+                const selectedStorageSizes = Array.from(document.querySelectorAll('input[value$="GB"]:checked, input[value$="TB"]:checked')).map(input => input.value);
+        
+                // Filter products based on the selected filters
+                const filteredProducts = products.filter(product =>
+                    (selectedBrands.length === 0 || selectedBrands.includes(product.brand)) &&
+                    (selectedProcessors.length === 0 || selectedProcessors.includes(product.processor)) &&
+                    (selectedPlatforms.length === 0 || selectedPlatforms.includes(product.processor)) &&
+                    (selectedMemoryTypes.length === 0 || selectedMemoryTypes.includes(product.memoryType)) &&
+                    (selectedGPUs.length === 0 || selectedGPUs.includes(product.gpu)) &&
+                    (selectedOS.length === 0 || selectedOS.includes(product.os)) &&
+                    (selectedScreenSizes.length === 0 || selectedScreenSizes.includes(product.screenSize)) &&
+                    (selectedStorageTypes.length === 0 || selectedStorageTypes.includes(product.storageType)) &&
+                    (selectedMemorySizes.length === 0 || selectedMemorySizes.includes(product.memorySize)) &&
+                    (selectedStorageSizes.length === 0 || selectedStorageSizes.includes(product.storageSize))
+                );
+        
+
+            
+                displayProducts(filteredProducts);
+            });
+        });
+
+
+
+
+    </script>
+</body>
+</html>

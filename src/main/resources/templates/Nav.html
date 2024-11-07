@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar Example</title>
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body>
+    <header>
+        <!-- Header -->
+        <div class="header">
+         <!-- Logo -->
+         <a href="/Nav"><div class="logo">PCGalaxy</div></a>
+     
+         <!-- Search Bar -->
+         <div class="search-bar">
+             <input type="text" placeholder="Search products...">
+             <button> Search</button>
+         </div>
+          <!-- All Categories Button -->
+          <div class="categories">
+             <button onclick="showCategories()">All Categories</button>
+         </div>
+     
+         <!-- Full Page Categories Dropdown -->
+         <div class="categories-dropdown" id="categoriesDropdown">
+             <span class="close-btn" onclick="hideCategories()">&times;</span>
+     
+             <div class="category-grid">
+                 <!-- Computer Accessories -->
+                 <div class="category-item">
+                     <i class="fas fa-tools"></i>
+                     <a href="#">Computer Accessories</a>
+                     <div class="nested-dropdown-content">
+                         <a href="/Keyboard"><i class="fas fa-keyboard"></i> Keyboards</a>
+                         <a href="/Mouse"><i class="fas fa-mouse"></i> Mouses</a>
+                         <a href="/Headsets"><i class="fas fa-headset"></i> Headsets</a>
+                         <a href="/Webcams"><i class="fas fa-video"></i> Webcams</a>
+                         <a href="/USB"><i class="fas fa-usb"></i> USB Hubs</a>
+                     </div>
+                 </div>
+     
+                 <!-- Computer Peripherals -->
+                 <div class="category-item">
+                     <i class="fas fa-desktop"></i>
+                     <a href="/Peripherals">Computer Peripherals</a>
+                     <div class="nested-dropdown-content">
+                         <a href="/Harddisk"><i class="fas fa-hdd"></i> Hard Disks</a>
+                         <a href="/NAS"><i class="fas fa-network-wired"></i> NAS Drives</a>
+                         <a href="/Motherboard"><i class="fas fa-microchip"></i> Motherboards</a>
+                         <a href="/Processor"><i class="fas fa-microchip"></i> Processors</a>
+                         <a href="/RAM"><i class="fas fa-memory"></i> RAM</a>
+                         <a href="/SSD"><i class="fas fa-database"></i> SSD</a>
+                         <a href="/Power"><i class="fas fa-plug"></i> Power Supply</a>
+                         <a href="/Cabinet"><i class="fas fa-server"></i> Cabinets</a>
+                         <a href="/Router"><i class="fas fa-wifi"></i> Routers</a>
+                     </div>
+                 </div>
+     
+                 <!-- Laptops -->
+                 <div class="category-item">
+                     <i class="fas fa-laptop"></i>
+                     <a href="../templates/Laptops.html">Laptops</a>
+                 </div>
+     
+                 <!-- Desktops -->
+                 <div class="category-item">
+                     <i class="fas fa-desktop"></i>
+                     <a href="/Desktops">Desktops</a>
+                 </div>
+     
+                 <!-- Tablets -->
+                 <div class="category-item">
+                     <i class="fas fa-tablet-alt"></i>
+                     <a href="/Tablets">Tablets</a>
+                 </div>
+     
+                 <!-- Coolers -->
+                 <div class="category-item">
+                     <i class="fas fa-snowflake"></i>
+                     <a href="#">Coolers</a>
+                     <div class="nested-dropdown-content">
+                         <a href="/Fan"><i class="fas fa-fan"></i> Fans</a>
+                         <a href="/Liquid_Cooler"><i class="fas fa-water"></i> Liquid Coolers</a>
+                         <a href="/CPU_Cooler"><i class="fas fa-microchip"></i> CPU Coolers</a>
+                     </div>
+                 </div>
+     
+                 <!-- Printers -->
+                 <div class="category-item">
+                     <i class="fas fa-print"></i>
+                     <a href="/Printer">Printers</a>
+                 </div>
+     
+                 <!-- Scanners -->
+                 <div class="category-item">
+                     <i class="fas fa-qrcode"></i>
+                     <a href="/Scanner">Scanners</a>
+                 </div>
+     
+                 <!-- Projectors -->
+                 <div class="category-item">
+                     <i class="fas fa-video"></i>
+                     <a href="/Projector">Projectors</a>
+                 </div>
+     
+                 <!-- UPS -->
+                 <div class="category-item">
+                     <i class="fas fa-battery-full"></i>
+                     <a href="/UPS">UPS</a>
+                 </div>
+     
+                 <!-- Windows IO -->
+                 <div class="category-item">
+                     <i class="fab fa-windows"></i>
+                     <a href="/Window">Windows IO</a>
+                 </div>
+     
+                 <!-- MS Office 365 -->
+                 <div class="category-item">
+                     <i class="fas fa-envelope-open-text"></i>
+                     <a href="/MS">MS Office 365</a>
+                 </div>
+     
+                 <!-- Antivirus -->
+                 <div class="category-item">
+                     <i class="fas fa-shield-alt"></i>
+                     <a href="/Antivirus">Antivirus</a>
+                 </div>
+             </div>
+         </div>
+         <!-- Right Icons -->
+         <div class="right-icons">
+             <div class="icon" onclick="window.location.href='login.html'"><i class="fas fa-user"></i> Login</div>
+             <div class="icon" onclick="window.location.href='cart.html'"><i class="fas fa-shopping-cart"></i> Cart</div>
+             <div class="icon" onclick="window.location.href='wishlist.html'"><i class="fas fa-heart"></i> Wishlist</div>
+             <div class="icon"><i class="fas fa-ellipsis-v"></i></div>
+         </div>
+     </div>
+                 
+         
+      </header>
+      
+         <div class="Menu">
+         <nav>
+             <ul>
+                 <li class="dropdown">
+                     <a href="#"><i class="fas fa-th-list"></i> CATEGORIES</a>
+                     <div class="dropdown-content">
+                         <div class="nested-dropdown">
+                             <a href="Accessories"><i class="fas fa-tools"></i> Computer Accessories</a>
+                             <div class="nested-dropdown-content">
+                                <a href="/Keyboard"><i class="fas fa-keyboard"></i>  Keyboards</a>
+                                 <a href="/Mouse"><i class="fas fa-mouse"></i>  Mouses</a>
+                                 <a href="/Headsets"><i class="fas fa-headset"></i>  Headsets</a>
+                                 <a href="/Webcams"><i class="fas fa-video"></i>  Webcams</a>
+                                 <a href="/USB"><i class="fas fa-usb"></i>  USB Hubs</a>
+                             </div>
+                         </div>
+                      <div class="dropdown-content">
+                            <div class="nested-dropdown">
+                                <a href="/Peripherals"><i class="fas fa-desktop"></i>  Computer Peripherals</a>
+                                 <div class="nested-dropdown-content">
+                                         <a href="Harddisk"><i class="fas fa-hdd"></i>  Hard Disks</a>
+                             <a href="NAS"><i class="fas fa-network-wired"></i>  NAS Drives</a>
+                         <a href="Motherboard"><i class="fas fa-microchip"></i>  Motherboards</a>
+                             <a href="Processor"><i class="fas fa-microchip"></i>  Processors</a>
+                             <a href="RAM"><i class="fas fa-memory"></i>  RAM</a>
+                             <a href="SSD"><i class="fas fa-database"></i>  SSD</a>
+                             <a href="Power"><i class="fas fa-plug"></i>  Power Supply</a>
+                             <a href="Cabinet"><i class="fas fa-server"></i>  Cabinets</a>
+                         <a href="Router"><i class="fas fa-wifi"></i>  Routers</a>
+         </div>
+                    </div>
+                         <a href="../templates/Laptops.html"><i class="fas fa-laptop"></i>  Laptops</a>
+                         <a href="Desktops"><i class="fas fa-desktop"></i>  Desktops</a>
+                         <a href="Tablets"><i class="fas fa-tablet-alt"></i>  Tablets</a>
+                         <a href="NUC"><i class="fas fa-cube"></i>  NUC</a>
+                    <div class="dropdown-content">
+                         <div class="nested-dropdown">
+                             <a href="/Cooler"><i class="fas fa-snowflake"></i>  Coolers</a>
+                                 <div class="nested-dropdown-content">
+                                     <a href="/Fan"><i class="fas fa-fan"></i>  Fans</a>
+                                         <a href="/Liquid_Cooler"><i class="fas fa-water"></i>  Liquid Coolers</a>
+                                             <a href="/CPU_Cooler"><i class="fas fa-microchip"></i>  CPU Coolers</a>
+                                 </div>			
+                         </div>
+                    <div class="dropdown-content">
+                         <div class="nested-dropdown">
+                             <a href="Printer"><i class="fas fa-print"></i>  Printers</a>
+                                 <div class="nested-dropdown-content">
+                                         <a href="/Laser"><i class="fas fa-print"></i>  Laser Printers</a>
+                                             <a href="/Inktank"><i class="fas fa-tint"></i>  Inktank Printers</a>
+                                             <a href="/DotMatrix"><i class="fas fa-th"></i>  Dot Matrix Printers</a>
+                                             <a href="/Barcode"><i class="fas fa-barcode"></i>  Barcode Printers</a>
+                                             <a href="/POS"><i class="fas fa-receipt"></i>  POS Printers</a>
+                                 </div>
+                         </div>
+                     <div class="dropdown-content">
+                         <div class="nested-dropdown">
+                             <a href="Scanner"><i class="fas fa-qrcode"></i>  Scanners</a>
+                                 <div class="nested-dropdown-content">
+                                     <a href="BarcodeSca"><i class="fas fa-barcode"></i>  Barcode Scanners</a>
+                                         <a href="DocumentSca"><i class="fas fa-file-alt"></i>  Document Scanners</a>
+                                 </div>
+                         </div>
+                             <a href="/Projector"><i class="fas fa-video"></i>  Projectors</a>
+                             <a href="/UPS"><i class="fas fa-battery-full"></i>  UPS</a>
+                             <a href="/Window"><i class="fab fa-windows"></i>  Windows IO</a>
+                             <a href="/MS"><i class="fas fa-envelope-open-text"></i>  MS Office 365</a>
+                             <a href="/Antivirus"><i class="fas fa-shield-alt"></i>  Antivirus</a>
+                             </div>
+                 </li>
+               <li class="dropdown">
+                     <a href="#"><i class="fas fa-gamepad"></i> GAMING ZONE</a>
+                     <div class="dropdown-content">
+                         <a href="/GamingLaptops"><i class="fas fa-laptop"></i>  Gaming Laptops</a>
+                         <div class="nested-dropdown">
+                             <a href="/GAccessories">Gaming Accessories</a>
+                             <div class="nested-dropdown-content">
+                                 <a href="/GamingKeyboards"><i class="fas fa-keyboard"></i>  Gaming Keyboard</a>
+                                 <a href="/GamingMouse"><i class="fas fa-mouse"></i>  Gaming Mouse</a>
+                                 <a href="/GamingMousepad"><i class="fas fa-mouse-pointer"></i>  Gaming Mousepad</a>
+                                 <a href="/GamingHeadphones"><i class="fas fa-headphones"></i>  Gaming Headphones</a>
+                                 <a href="/GamingChairs"><i class="fas fa-chair"></i>  Gaming Chairs & Desk</a>
+                                 <a href="/ThermalPaste"><i class="fas fa-snowflake"></i>  Thermal Paste</a>
+                                 <a href="/CablesConnectors"><i class="fas fa-plug"></i>  Cables & Connectors</a>
+                             </div>
+                      </div>
+                          <div class="dropdown-content">
+                             <a href="/GamingCabinet"><i class="fas fa-box-open"></i> Gaming Cabinets</a>
+                             <a href="/GMotherboard"><i class="fas fa-microchip"></i> Gaming Motherboards</a>
+                             <a href="/GGraphicCards"><i class="fas fa-gamepad"></i> Gaming Graphic Cards</a>
+                             <a href="/GPowerSupply"><i class="fas fa-bolt"></i> Gaming Power Supply</a>
+                             <a href="/GRAM"><i class="fas fa-memory"></i> Gaming RAM</a>
+                             <a href="/GSSD"><i class="fas fa-hdd"></i> Gaming SSD</a>
+                             <a href="/GHardDisks"><i class="fas fa-hdd"></i> Gaming Hard Disks</a>
+                             <a href="/GMonitors"><i class="fas fa-desktop"></i> Gaming Monitors</a>
+                          </div>
+                 </li>
+                 <li class="dropdown">
+                    <a href="#"><i class="fas fa-store"></i> EXCLUSIVE STORE</a>
+                 <div class="dropdown-content">
+                         <div class="nested-dropdown">
+                                 <a href="AppleStore"><i class="fab fa-apple"></i> Apple Store</a>
+                                 <div class="nested-dropdown-content">
+                                     <a href="/AppleAcc"><i class="fas fa-box-open"></i> Apple Accessories</a>
+                                     <a href="/AppleiMac"><i class="fas fa-desktop"></i> Apple iMac Series</a>
+                                     <a href="/AppleiPad"><i class="fas fa-tablet-alt"></i> Apple iPad Series</a>
+                                     <a href="/AppleMac"><i class="fas fa-plug"></i> Apple MacBook Air</a>
+                                     <a href="/AppleMacPro"><i class="fas fa-laptop"></i> Apple MacBook Pro</a>
+             
+                                 </div>
+                         </div>
+                     <div class="nested-dropdown">
+                     <a href="MSIStore"><i class="fas fa-laptop-code"></i> MSI Store</a>
+                     <div class="nested-dropdown-content">
+                             <a href="/MSILaptops"><i class="fas fa-laptop"></i> MSI Laptops</a>
+                             <a href="/MSICabinets"><i class="fas fa-server"></i> MSI Cabinets</a>
+                             <a href="/MSIGGraphicCards"><i class="fas fa-video"></i> MSI Gaming Graphics Cards</a>
+                             <a href="/MSIMotherboards"><i class="fas fa-microchip"></i> MSI Motherboards</a>
+                             <a href="/MSIMonitors"><i class="fas fa-tv"></i> MSI Monitors</a>
+                             <a href="/MSIKeyboards"><i class="fas fa-keyboard"></i> MSI Keyboards</a>
+                       </div>
+                 </div>
+              <div class="nested-dropdown">
+                     <a href="RapooStore"><i class="fas fa-keyboard"></i> Rapoo Store</a>
+                      <div class="nested-dropdown-content">
+                           <a href="/RapooGPad"><i class="fas fa-gamepad"></i> Rapoo Gamepads</a>
+                           <a href="/RapooKeyboards"><i class="fas fa-keyboard"></i> Rapoo Keyboards</a>
+                           <a href="/RapooMice"><i class="fas fa-mouse"></i> Rapoo Mice</a>
+                           <a href="/RapooWebcam"><i class="fas fa-camera"></i> Rapoo Webcam</a>
+     
+                         
+                       </div>
+                 </div>
+                     <a href="fibit"><i class="fas fa-stopwatch"></i> Fitbit Store</a>
+                         <a href="asus"><i class="fas fa-microchip"></i> Powered by ASUS</a>
+             </div>
+     
+                 </li>
+                 <li class="dropdown">
+                    <a href="#"><i class="fas fa-vr-cardboard"></i> EXPERIENCE ZONE</a>
+                 <div class="dropdown-content">
+                         <a href="Intel12"><i class="fas fa-microchip"></i> Intel 12th Gen Desktop Processors</a>
+                         <a href="Intel11"><i class="fas fa-microchip"></i> Intel Core 11th Gen Desktop Processors</a>
+                         <a href="IntelNUC"><i class="fas fa-cube"></i> Intel NUC</a>
+                         <a href="Color"><i class="fas fa-palette"></i> Colorful Zone</a>
+                         <a href="Digital"><i class="fas fa-hdd"></i> Western Digital Zone</a>
+                         <a href="Games"><i class="fas fa-gamepad"></i> Frames with Games</a>
+                         <a href="Kingston"><i class="fas fa-memory"></i> Kingston</a>
+                 </div>
+         </li>
+                <li><a href="offer"><i class="fas fa-tags"></i> OFFER ZONE</a></li>
+                 <li><a href="brands"><i class="fas fa-store"></i> BRANDS</a></li>
+                 <li><a href="build"><i class="fas fa-desktop"></i> BUILD YOUR OWN PC</a></li>
+     
+          </ul>
+        </nav>
+       </div>
+       
+     <body>
+        
+         <!-- Sliding Banner -->
+         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+             <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2000"> <!-- 2 seconds -->
+                    <img src="../static/image/MX-Solutions-1400x600-1400x506.jpg" alt="Laptop" height="500px">
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                 </div>
+                <div class="carousel-item active" data-bs-interval="2000"> <!-- 2 seconds -->
+                   <img src="../static/image/Untitled-1-1400x506.jpg" alt="Laptop" height="500px">
+                   <div class="carousel-caption d-none d-md-block">
+                   </div>
+                </div>
+                
+              <div class="carousel-item" data-bs-interval="2000"> <!-- 3 seconds -->
+          
+                   <img src="../static/image/G502-X-Plus-10-Year-Anniversary_1400x600px-1400x506.jpg" class="d-block w-100" alt="Keyboard">
+                   <div class="carousel-caption d-none d-md-block">
+                     
+                   </div>
+                </div>
+                   <div class="carousel-item" data-bs-interval="2000"> <!-- 3 seconds -->
+                   <img src="../static/image/Msi-Banner-1400x506.jpg" class="d-block w-100" alt="Printer">
+                   <div class="carousel-caption d-none d-md-block">
+                   </div>
+                   </div>
+             </div>
+          </div>
+          
+          <br>
+          <br>
+          <br>
+          <br>
+          
+              <!-- Stock Clearance Section
+         <div class="stock-clearance">
+             <h2>Stock Clearance Sale!</h2>
+             <p>Huge discounts on selected products. Hurry up before stocks run out!</p>
+         </div> -->
+          <!-- Product Section -->
+     <h1 style="background-color: black; color: white; text-align: center;">Offers On Laptops, Monitors & It's Accessories</h1>
+     <section class="product-section">
+         <div class="container">
+             <div class="product-grid">
+                 <div class="product-item" onclick="window.location.href='product1-details.html'">
+                     <img src="../static/image/b1-335x225.jpg" alt="Product 1">
+                     <div class="hover-text">View All</div>
+                 </div>
+                 <div class="product-item" onclick="window.location.href='product2-details.html'">
+                     <img src="../static/image/b2-335x225.jpg" alt="Product 2">
+                     <div class="hover-text">View All</div>
+                 </div>
+                 <div class="product-item" onclick="window.location.href='product3-details.html'">
+                     <img src="../static/image/b3-335x225.jpg" alt="Product 3">
+                     <div class="hover-text">View All</div>
+                 </div>
+                 <div class="product-item" onclick="window.location.href='product4-details.html'">
+                     <img src="../static/image/b4-335x225.jpg" alt="Product 4">
+                     <div class="hover-text">View All</div>
+                 </div>
+             </div>
+         </div>
+     </section>
+     <section class="product-section">
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-item" onclick="window.location.href='product1-details.html'">
+                    <img src="../static/image/b5-335x225.jpg" alt="Product 1">
+                    <div class="hover-text">View All</div>
+                </div>
+                <div class="product-item" onclick="window.location.href='product2-details.html'">
+                    <img src="../static/image/b6-335x225.jpg" alt="Product 2">
+                    <div class="hover-text">View All</div>
+                </div>
+                <div class="product-item" onclick="window.location.href='product3-details.html'">
+                    <img src="../static/image/b8-335x225.jpg" alt="Product 3">
+                    <div class="hover-text">View All</div>
+                </div>
+                <div class="product-item" onclick="window.location.href='product4-details.html'">
+                    <img src="../static/image/b9-335x225.jpg" alt="Product 4">
+                    <div class="hover-text">View All</div>
+                </div>
+            </div>
+        </div>
+    </section>
+         
+         <h1 class="product-heading">New Arrivals</h1>
+    <div class="slider-wrapper">
+        <button class="slider-prev" id="new-arrivals-prev"><i class='bx bx-chevron-left-circle'></i></button>
+    <!-- 1 Slider -->
+    <div class="slider-container" id="new-arrivals-slider">
+        <!-- First Product -->
+        <div class="product-card">
+            <div class="offer-tag">57% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <!-- Link the product image to the details page -->
+                <a href="product-details.html">
+                    <img src="../static/image/1-500x500_9.jpg" alt="Product" class="product-image">
+                    <img src="../static/image/1-500x500_7.jpg" alt="Product Hover" class="image-hover">
+                </a>
+            </div>
+            <!-- Link the product name to the details page -->
+            <a href="product-details.html" class="product-name">Intel Core i5-14600K 14th Gen 14 Core Upto 5.3GHz LGA1700 Processor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            <div class="product-price">
+                ₹23,150.00 <span class="old-price">₹54,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 2 Product -->
+        <div class="product-card">
+            <div class="offer-tag">29% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-250x250_13.jpg" alt="Product" class="product-image">
+                <img src="../static/image/cf7-250x250.jpg" alt="Product Hover" class="image-hover">
+                </a>
+            </div>
+            <a href="product-details.html" class="product-name">AIntel Core i7-11700K 11th Gen 8 Core Upto 5.0GHz LGA1200 Processor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="product-price">
+                ₹24,900.00 <span class="old-price">₹35,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 3 Product -->
+        <div class="product-card">
+            <div class="offer-tag">26% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/qt1-250x250w.jpg" alt="Product" class="product-image">
+                <img src="../static/image/qt3-250x250w.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Epson EcoTank L3250 All-in-One Wi-Fi Ink Tank Printer ---------</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹14,000.00 <span class="old-price">₹19,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 4 Product -->
+        <div class="product-card">
+            <div class="offer-tag">12% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/hp2.jpg" alt="Product" class="product-image">
+                <img src="../static/image/HP 15-FD0018TU.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">HP 15-FD0018TU [CI3-1315U 13TH GEN/8GB DDR4/512GB SSD/</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹45,800.00 <span class="old-price">₹52,273.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 5 Product -->
+        <div class="product-card">
+            <div class="offer-tag">48% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-250x250.png" alt="Product" class="product-image">
+                <img src="../static/image/2-500x500_1.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Ant Esports Ice Glow 360MM AIO Liquid Cooler ARGB White ---------</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹7,250.00 <span class="old-price">₹14,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 6 Product -->
+        <div class="product-card">
+            <div class="offer-tag">61% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-250x250w_2.jpg" alt="Product" class="product-image">
+                <img src="../static/image/4-250x250h.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">AMD Ryzen 5 8500G 6 Cores Upto 5GHz AM5 Processor ---------</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹14,800.00 <span class="old-price">₹38,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 7 Product -->
+        <div class="product-card">
+            <div class="offer-tag">51% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-250x250w_3.jpg" alt="Product" class="product-image">
+                <img src="../static/image/2-500x500w_2.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">AMD Ryzen 5 5600 6 Core Upto 4.4GHz AM4 Processor ------------</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹12,050.00 <span class="old-price">₹24,500.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 8 Product -->
+        <div class="product-card">
+            <div class="offer-tag">33% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-250x250w_3.jpg" alt="Product" class="product-image">
+                <img src="../static/image/3-250x250w_1.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">AMD RYZEN 7 5700G 8 Core Upto 4.6GHz AM4 Processor ---------</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹16,450.00 <span class="old-price">₹24,500.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 9 Product -->
+        <div class="product-card">
+            <div class="offer-tag">48% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/ry02-250x250h.jpg" alt="Product" class="product-image">
+                <img src="../static/image/ry03-250x250w.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">AMD Ryzen 5 5500 6 cores Upto 4.2GHz AM4 Processor ------------</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹8,450.00 <span class="old-price">₹16,400.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 10 Product -->
+        <div class="product-card">
+            <div class="offer-tag">34% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/cpuinteli510400-01-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/cpuinteli510400-02-500x500.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Intel Core i5-10400F 10th Gen 6 Core Upto 4.3GHz LGA1200 Processor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹8,900.00 <span class="old-price">₹13,500.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <button class="slider-next" id="new-arrivals-next"><i class='bx bx-chevron-right-circle'></i></button>
+        <!-- Additional products can be added here in the same pattern -->
+    </div>
+    <h1 class="product-heading">Best Sellers</h1>
+    <div class="slider-wrapper">
+        <button class="slider-prev" id="best-sellers-prev"><i class='bx bx-chevron-left-circle'></i></button>
+    <!--  2 Slider -->
+    <div class="slider-container" id="best-sellers-slider">
+        <!-- 1 Product -->
+        <div class="product-card">
+            <div class="offer-tag">34% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/graphicgeforcegtx16504gb-01-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/graphicgeforcegtx16504gb-04-250x250.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Colorful GeForce GTX 1650 4GB Dual DDR6 Graphic Card ------------</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            <div class="product-price">
+                ₹12,190.00 <span class="old-price">₹18,400.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 2 Product -->
+        <div class="product-card">
+            <div class="offer-tag">30% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/5_gallery_450_mwe_bronze_v2-zoom-500x500.png" alt="Product" class="product-image">
+                <img src="../static/image/6_gallery_450_mwe_bronze_v2-zoom-500x500.png" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Cooler Master 450W MWE450 V2 80 Plus Bronze Non Modular Smps</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="product-price">
+                ₹2,950.00 <span class="old-price">₹4,199.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 3 Product -->
+        <div class="product-card">
+            <div class="offer-tag">45% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/61ApygpX9oL._SL1010_-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/61ApygpX9oL._SL1010_-500x500.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Quick Heal Internet Security Essentials 1User EMAIL Delivery </a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹275.00 <span class="old-price">₹499.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 4 Product -->
+        <div class="product-card">
+            <div class="offer-tag">42% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/718THDeCWFL._SL1500_-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/717s6NJQzyL._SL1500_-250x250.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">NZXT 750W C750 80 Plus Gold Fully Modular SMPS ---------------</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹8,690.00 <span class="old-price">₹14,999.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 5 Product -->
+        <div class="product-card">
+            <div class="offer-tag">51% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/202101131413599414-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/202101291156249909-250x250.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Colorful IGAME Geforce RTX 3060 Ultra W OC 12G-V 12GB GDDR6 Graphics Card</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹26,350.00 <span class="old-price">₹54,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 6 Product -->
+        <div class="product-card">
+            <div class="offer-tag">48% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/750GM-250x250.png" alt="Product" class="product-image">
+                <img src="../static/image/750GM1-500x500.png" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Gigabyte 750W GP-P750GM 80 Plus Gold Fully Modular Smps ---------</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹6,299.00 <span class="old-price">₹12,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 7 Product -->
+        <div class="product-card">
+            <div class="offer-tag">16% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/gallery-hcg1000-extreme-4-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/gallery-hcg1000-extreme-5-250x250.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Antec 1000W HCG1000 Extreme 80Plus Gold Fully Modular Smps ---------</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹13,000.00 <span class="old-price">₹15,500.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 8 Product -->
+        <div class="product-card">
+            <div class="offer-tag">44% OFF</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-250x250w.png" alt="Product" class="product-image">
+                <img src="../static/image/2-250x250w_3 copy.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">ASRock AMD Radeon RX7600XT 16GB Challenger OC Graphic Card</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹31,500.00 <span class="old-price">₹56,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 9 Product -->
+        <div class="product-card">
+            <div class="offer-tag">44% OFF</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-250x250w.png" alt="Product" class="product-image">
+                <img src="../static/image/2-250x250w_3 copy.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">ASRock AMD Radeon RX7600XT 16GB Challenger OC Graphic Card</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹31,500.00 <span class="old-price">₹56,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 10 Product -->
+        <div class="product-card">
+            <div class="offer-tag">44% OFF</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-250x250w.png" alt="Product" class="product-image">
+                <img src="../static/image/2-250x250w_3 copy.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">ASRock AMD Radeon RX7600XT 16GB Challenger OC Graphic Card</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹31,500.00 <span class="old-price">₹56,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <button class="slider-next" id="best-sellers-next"><i class='bx bx-chevron-right-circle'></i></button>
+        <!-- Additional products can be added here in the same pattern -->
+    </div>
+
+
+    <h1 class="product-heading">Monitors</h1>
+    <div class="slider-wrapper">
+        <button class="slider-prev" id="Monitors-prev"><i class='bx bx-chevron-left-circle'></i></button>
+    <!-- Product Slider -->
+    <div class="slider-container" id="Monitors-slider">
+        <!-- 1 Product -->
+        <div class="product-card">
+            <div class="offer-tag">36% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-250x250w_7.jpg" alt="Product" class="product-image">
+                <img src="../static/image/2-250x250_7.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Asus ProArt 27 Inch PA278QV WQHD IPS 75Hz Professional Monitor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            <div class="product-price">
+                ₹26,400.00 <span class="old-price">₹41,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 2 Product -->
+        <div class="product-card">
+            <div class="offer-tag">36% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/asustufvg27aql-01-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/asustufvg279qm-04-250x250.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Asus TUF Gaming VG279QM 27 inches IPS FHD HDR 400 Gsync Upto 280Hz Monitor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="product-price">
+                ₹28,899.00 <span class="old-price">₹45,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 3 Product -->
+        <div class="product-card">
+            <div class="offer-tag">19% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/asustufvg279qm-01-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/asustufvg27aql-02-250x250.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Asus Tuf 27 Inch VG27AQL1A WQHD IPS 165Hz G-Sync Gaming Monitor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹31,750.00 <span class="old-price">₹39,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 4 Product -->
+        <div class="product-card">
+            <div class="offer-tag">15% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-500x500_14.jpg" alt="Product" class="product-image">
+                <img src="../static/image/5-250x250_5.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Asus Tuf 28 Inch VG28UQL1A UHD IPS 144Hz Gaming Monitor with Height </a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹72,150.00 <span class="old-price">₹85,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 5 Product -->
+        <div class="product-card">
+            <div class="offer-tag">12% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/4-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/5-250x250_3.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Asus Rog Strix 27 Inch XG27UQR UHD IPS 144Hz G-Sync Gaming Monitor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹68,000.00 <span class="old-price">₹76,999.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 6 Product -->
+        <div class="product-card">
+            <div class="offer-tag">36% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-250x250w_7.jpg" alt="Product" class="product-image">
+                <img src="../static/image/2-250x250_7.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Asus ProArt 27 Inch PA278QV WQHD IPS 75Hz Professional Monitor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            <div class="product-price">
+                ₹26,400.00 <span class="old-price">₹41,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 7 Product -->
+        <div class="product-card">
+            <div class="offer-tag">36% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/asustufvg27aql-01-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/asustufvg279qm-04-250x250.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Asus TUF Gaming VG279QM 27 inches IPS FHD HDR 400 Gsync Upto 280Hz Monitor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="product-price">
+                ₹28,899.00 <span class="old-price">₹45,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+
+        <!-- 8 Product -->
+        <div class="product-card">
+            <div class="offer-tag">19% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/asustufvg279qm-01-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/asustufvg27aql-02-250x250.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Asus Tuf 27 Inch VG27AQL1A WQHD IPS 165Hz G-Sync Gaming Monitor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹31,750.00 <span class="old-price">₹39,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 9 Product -->
+        <div class="product-card">
+            <div class="offer-tag">15% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/1-500x500_14.jpg" alt="Product" class="product-image">
+                <img src="../static/image/5-250x250_5.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Asus Tuf 28 Inch VG28UQL1A UHD IPS 144Hz Gaming Monitor with Height </a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹72,150.00 <span class="old-price">₹85,000.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <!-- 10 Product -->
+        <div class="product-card">
+            <div class="offer-tag">12% OFF</div>
+            <div class="wishlist-icon">&#x2764;</div>
+            <div class="product-image-container">
+                <a href="product-details.html">
+                <img src="../static/image/4-250x250.jpg" alt="Product" class="product-image">
+                <img src="../static/image/5-250x250_3.jpg" alt="Product Hover" class="image-hover">
+            </div>
+            <a href="product-details.html" class="product-name">Asus Rog Strix 27 Inch XG27UQR UHD IPS 144Hz G-Sync Gaming Monitor</a>
+            <div class="ratings">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            <div class="product-price">
+                ₹68,000.00 <span class="old-price">₹76,999.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        <button class="slider-next" id="Monitors-next"><i class='bx bx-chevron-right-circle'></i></button>
+        <!-- Additional products can be added here in the same pattern -->
+    </div>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+    <script src="../static/javascript/nav.js"></script>
+    
+</body>
+<br>
+<br>
+<img alt="" src="../static/image/MX-Solutions-1400x600-1400x506.jpg">
+<footer>
+    <!-- Social Icons -->
+    <div class="footer container">
+        <div class="socialIcons">
+            <a href="https://www.facebook.com/story.php/?story_fbid=891691659644444&id=100064108537216" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://x.com/settings/account?lang=en" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/vedas-rapshtech-private-limited/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://wa.me/8639889209?text=Hello How can I help you?" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <!-- Footer Content -->
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="/delivary">Delivery</a></li>
+                <li><a href="/pri&pol">Privacy Policy</a></li>
+                <li><a href="/term&cond">Terms & Conditions</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>My Account</h3>
+            <ul>
+                <li><a href="/myAcc">My Account</a></li>
+                <li><a href="/orderHis">Order History</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>4th floor, LP Towers, Huda Techno Enclave Rd, Hi-Tech City, Hyd-500 081</p>
+        </div>
+
+        <!-- Sitemap Section with Toggle Button -->
+        <div class="footer-section">
+            <h3><button class="sitemap-btn" onclick="toggleSitemap()">Sitemap </button></h3>
+            <ul id="sitemap-categories" style="display: none;">
+                <li><a href="#">Laptops</a></li>
+                <li><a href="#">Desktops</a></li>
+                <li><a href="#">Printers</a></li>
+                <li><a href="#">Accessories</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Newsletter</h3>
+            <form>
+                <input type="email" placeholder="Your email" required>
+                <button type="submit"><i class="fa-regular fa-envelope"></i> SEND</button>
+                <label><input type="checkbox" required> I agree to the Terms & Conditions</label>
+            </form>
+        </div>
+    </div>
+    <!-- Footer Bottom Section -->
+    <div class="footerBottom">
+        <div class="footerBottom-right">
+            <p>© 2022-23, PC Galaxy. All Rights Reserved.</p>
+            <div class="payment-methods">
+                <img src="../static/image/visa.png" alt="Visa">
+                <img src="../static/image/mastercard.png" alt="Mastercard">
+                <img src="../static/image/paypal.png" alt="PayPal">
+                <img src="../static/image/amozone.png" alt="American Express">
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

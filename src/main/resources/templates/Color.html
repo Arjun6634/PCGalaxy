@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Colorful Zone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <style>
+    
+        /* Basic styling for the navigation bar */
+        nav {
+            background-color:#468585; /* Cyan background color */
+            padding: 10px 0;
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            font-size: 16px;
+            padding: 10px 15px;
+            position: relative;
+        }
+        li a {
+            color: rgb(255, 255, 255); /* Set text color to black */
+            text-decoration: none;
+        }
+        li:hover {
+            background-color: #f1f3f585; /* Slightly darker background on hover */
+        }
+    
+        /* Dropdown menu styles */
+        .dropdown {
+         
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content, .nested-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a, .nested-dropdown-content a {
+            color: #3C2C80;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover, .nested-dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content, .nested-dropdown:hover .nested-dropdown-content {
+            display: block;
+        }
+
+        .dropdown > a::after, .nested-dropdown > a::after {
+            content: " ▼"; /* Caret symbol */
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        /* Adjust nested dropdown position */
+        .nested-dropdown-content {
+            left: 100%;
+            top: 0;
+        }
+        .center {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+    align-items: center;
+    gap: 15px; /* Adds space between the buttons */
+}
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between the elements */
+    background-color:white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-style: solid; 
+}
+.header-container {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-between; /* Ensure space between image, search bar, and social icons */
+    background-color: #468585;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px #9CDBA6;
+    border-style: solid;
+    gap: 10px; /* Adds space between elements */
+}
+
+.header-container img {
+    margin-right: 10px; /* Adds some space between the image and the search bar */
+    
+}
+
+.header-container input[type="search"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    outline: none;
+    background-color: #f0f0f0;
+    width: 300px; /* Set width for the search bar */
+}
+
+.header-container div.social-icons {
+ font-size: 2em;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adds space between social media icons */
+}
+
+.contact-info {
+    text-align: right;
+}
+
+.contact-info p {
+    margin: 0;
+}
+
+.contact-info a {
+    color: #FEFFD2;
+    padding:  5px  ;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between elements */
+    background-color: #ff0080;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px ;
+}
+
+.contact-info {
+    position: absolute;
+    top: -8px; /* Adjusts the distance from the top */
+    right: 20px; /* Adjusts the distance from the right */
+    text-align: right;
+    font-size: 14px;
+   
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+ .contact-info a {
+    color: FCF8F3;
+    text-decoration: none;
+}
+/* Input search styling */
+input[type="search"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 250px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    outline: none;
+    background-color: #f0f0f0;
+}
+
+/* Search icon styling */
+.search-icon {
+    cursor: pointer;
+}
+
+/* Hover effects */
+select:hover, input[type="search"]:hover {
+    border-color: #9CDBA6;
+}
+.search-container {
+    position: relative;
+    display: inline-block;
+    
+}
+
+#search-bar {
+    padding: 10px 40px 10px 15px; /* Adds padding to make space for the icon */
+    font-size: 16px;
+    width: 300px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    outline: none;
+    background-color: #D6EFD8;
+}
+
+.search-icon {
+    position: center;
+    right: 15px; /* Adjust this value as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #DEF9C4;
+    cursor: pointer;
+}
+
+
+.center button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #000;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.center button i {
+    margin-right: 5px; /* Adds space between the icon and text */
+}
+
+.center button:hover {
+    background-color: #f1f3f585; /* Change button color on hover */
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-badge {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center;
+    gap: 15px; /* Space between buttons */
+    padding: 10px 20px;
+    background-color: #468585;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar button {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 5px;
+    font-size: 16px;
+    color: #000;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+ .navbar button i {
+    margin-right: 5px;
+   
+     background-color:#DEF9C4;
+}
+
+.navbar button:hover {
+    background-color: #9CDBA6; /* Change button color on hover */
+}
+
+button:focus {
+    outline: none; /* Removes the default outline when clicked */
+}
+        .footer-container {
+            background-color:black;
+            padding: 20px;
+        }
+      
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+      
+        .footer-section {
+            text-align: center;
+        }
+      
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+      
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+      
+        .footer-section ul li a {
+            text-decoration: none;
+            color:white;
+        }
+      
+        .socialIcons {
+            display: flex;
+            justify-content: center;
+        }
+      
+        .socialIcons  a {
+            text-decoration:none;
+            padding:10px;
+            background-color:white;
+            margin: 10px;
+            border-radius:50%;
+        }
+        .socialIcons a i{
+            font-size: 2em;
+            color:#468585;
+            opacity: 0.9;
+        }
+
+        .socialIcons a:hover i{
+            color:blue;
+            transition:0.5s;
+        }
+
+        footer {
+            background-color: #50B498;
+            padding: 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            color:white;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="email"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #468585;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        label {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .footerBottom {
+            text-align: left;
+            margin-top:30px;
+            font-size:15px;
+            color:white;
+        }
+        
+        .carousel-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-slide {
+    display: flex;
+    width: 500%;
+    height: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#prevBtn, #nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 18px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+        
+        
+        
+        
+        
+        
+        
+.search-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px 40px 10px 40px; /* Adjust padding for icon */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 200px; /* Set width for the search bar */
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 10px; /* Position the icon inside the input */
+            top: 50%;
+            transform: translateY(-50%); /* Center the icon vertically */
+            color: #173B45;
+            font-size: 24px;
+        }
+
+    </style>
+    
+</head>
+<body>
+
+
+ <header>
+    <div class="header-container">
+        <!-- Logo Section -->
+           <a href="/Nav">  <img  src="/image/PCGalaxy.png" width="80" height="80"></a>
+    <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" placeholder="Search...">
+    </div>
+    <br>
+    <nav class="navbar">
+    <!--  <button href="index.html"><i class="fas fa-home"></i> Home</button> -->
+    <button href="products.html"><i class="fas fa-box-open"></i> Products</button>
+    <button href="services.html"><i class="fas fa-concierge-bell"></i> Services</button>
+    <button href="about.html"><i class="fas fa-info-circle"></i> About Us</button>
+    <button href="contact.html"> <i class="fas fa-phone"></i>Contact Us</button>
+    <a href="/login"><button><i class="fas fa-user"></i>Login </button></a>
+    <a href="/wishlist"><button><i class="fas fa-heart"></i> Wishlist</button></a>
+    <button href="cart.html"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+    </nav>
+	</div>    
+        <!-- Contact Info -->
+        <div class="contact-info">
+        <h3>
+            <p> <a href="mailto:contact@pcgalaxy.com"><i class="fas fa-envelope"></i> contact@pcgalaxy.com</a></p>
+
+            </h3>
+        </div>
+    </div>
+  </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section">
+        <div class="item">
+       
+                <lable><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_ZlsXWQEm7t2VTVVcRFr5UG3X6U8E-a5k9A&s">
+               </lable>
+                <h3>Mechanical Laptops</h3>
+                <label><span class="rupee-symbol">₹</span>10000</label> <br>
+    <input id="spinner" type="number" value="1" min="1" max="100" step="1">
+                <button type="button">Add to Cart</button>
+            </div>
+            <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_ZlsXWQEm7t2VTVVcRFr5UG3X6U8E-a5k9A&s">
+                <h3>Mechanical Laptops</h3>
+                <label><span class="rupee-symbol">₹</span>10000</label> <br>
+    <input id="spinner" type="number" value="1" min="1" max="100" step="1">
+                <button type="button">Add to Cart</button>
+            </div>
+            <div class="item">
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSVnziSqahX9OmPsLhM96JP65oKRRlswVj1Ju7Jur0ziop8Ycdg8NLp5yYn9bejIAvcwtUuTG8Jia_WMA3kEqPx2rlrXianuUOCLOPKmdqlwiWVn3wbkw5_dQ&usqp=CAE">
+                <h3>Gaming Laptops</h3>
+                <label><span class="rupee-symbol">₹</span>10000</label> <br>
+                <input id="spinner" type="number" value="1" min="1" max="100" step="1">
+                <button type="button">Add to Cart</button>
+            </div>
+            <div class="item">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT4Jw6bXGvcmI9z-P68lgoRqwX5m2__fLsvjknpsYca-sRYUMYAHJPYzJCmHCN1RrWpGqIPJlStwxR_zCySbdEbDfmSDsueqIXgHYTcipcrpn1V6NvV8mV2XA&usqp=CAE">     
+                 <h3>Ergonomic Keyboard</h3>
+                 <label><span class="rupee-symbol">₹</span>10000</label> <br>
+                 <input id="spinner" type="number" value="1" min="1" max="100" step="1">
+                <button type="button">Add to Cart</button>
+            </div>
+            <div class="item">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS2EOdUi1Mb6bq3UfNvO6c27EBgy452vjBYfqQFgDcHKjfbH_xxVEvtU7298y62BT4tBcrKiUdrbttAeI9utUxn2z6uvzbtdoPkDddG9wvh47-ffjl6Rgheww&usqp=CAE" alt="Wireless Keyboard">
+                <h3>Wireless Laptops</h3>
+                <label><span class="rupee-symbol">₹</span>10000</label> <br>
+                <input id="spinner" type="number" value="1" min="1" max="100" step="1">
+                <button type="button">Add to Cart</button>
+            </div>
+            <div class="item">
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSq_agn7SdYg_Uu4Biz9I4BEJE5Um-UqZg1d63Cmb94IzaO7bOR5n1LFCDovOs3yX9U_DbuJDu8v-_UArSEv959C6uslbZABwim8hX7bmw&usqp=CAE" alt="RGB Keyboard">
+                <h3>RGB Laptops</h3>
+                <label><span class="rupee-symbol">₹</span>10000</label> <br>
+                <input id="spinner" type="number" value="1" min="1" max="100" step="1">
+                <button type="button">Add to Cart</button>
+            </div>
+        </section>
+    </main>
+	<br>
+	<br>
+    <!-- Footer -->
+        <footer>
+        <div class="footer container">
+            <div class="socialIcons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+                <a href=""><i class="fa-brands fa-pinterest"></i></a>
+                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><u>About Us</u></h3>
+                <ul>
+                    <li><a href="#">Delivery</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3><u>My Account</u></h3>
+                <ul>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Order History</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3><u>Contact Us</u></h3>
+                <p>4th floor, LP Towers, Huda Techno Enclave Rd, Hi-Tech City, Hyd-500 081</p>
+            </div>
+            <div class="footer-section">
+                <h3><u>Newsletter</u></h3>
+                <form>
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit"><i class="fa-regular fa-envelope"></i> SEND</button>
+                    <label><input type="checkbox" required> I have read and agree to the Terms & Conditions</label>
+                </form>
+            </div>
+        </div>
+
+        <div class="footerBottom">
+            <p>Copyright © 2022-23, PC Galaxy</p>
+        </div>
+    </footer>
+   
+
+</body>
+</html>

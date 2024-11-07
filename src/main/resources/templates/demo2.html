@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Filters</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.filters {
+    width: 20%;
+    background-color: #fff;
+    padding: 20px;
+    border-right: 2px solid #e0e0e0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.filter-group h4 {
+    margin-bottom: 10px;
+}
+
+
+/* HR styling */
+hr {
+    border: none;
+    border-top: 1px solid #e0e0e0; /* Light grey line */
+    margin: 20px 0; /* Add spacing around the line */
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.filter-group img {
+    margin-left: 10px; /* Adds some spacing between the checkbox and the image */
+    width: 50px; /* Adjust width as needed */
+    height: auto;
+}
+
+/* Add space between checkbox and text */
+.filter-group label input {
+    margin-right: 10px; /* Adjust the space (10px) as needed */
+}
+
+
+/* Individual product cards */
+.product-card {
+            width: 20%;
+            min-width: 250px;
+            max-width: 250px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 10px;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Offer tag */
+        .offer-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff5722;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        /* Wishlist heart icon */
+        .wishlist-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #ee0d58;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /* Product image container to limit zoom effect */
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 200px; /* Adjust height to ensure consistency */
+        }
+
+        /* Product image */
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        /* On hover, zoom effect and switch image */
+        .product-card:hover .product-image {
+            transform: scale(1.2);
+        }
+
+        .product-card:hover .image-hover {
+            opacity: 1;
+        }
+
+        .image-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            object-fit: cover;
+        }
+
+        /* Product name */
+        .product-name {
+    display: contents; /* Make it a block element */
+    background-color: white; /* Change background color */
+    color: black; /* Change text color */
+    padding: 10px; /* Add padding for better appearance */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove the underline */
+    font-weight: bold; /* Make the text bold */
+    margin-top: 10px; /* Add some space above the name */
+    border-radius: 5px; /* Rounded corners for a smooth look */
+}
+
+/* Optionally, you can add hover effects */
+.product-name:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+
+        /* Product price */
+        .product-price {
+            color: #388e3c;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        /* Ratings */
+        .ratings {
+            color: #ffa41c;
+            margin: 5px 0;
+        }
+
+        /* Add to Cart button */
+        .add-to-cart-btn {
+            background-color: #1976d2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #0d47a1;
+        }
+
+
+        /* Reset margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Each product item */
+.product-item {
+    position: relative;
+    width: 22%; /* Adjust width to fit 4 items in one row */
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.product-item:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.hover-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-item:hover .hover-text {
+    opacity: 1; /* Show text on hover */
+}
+
+/* Product grid styling */
+.product-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 0px;
+}
+    </style>
+</head>
+<body>
+    <h1 style="background-color: black; color: white; text-align: center;"> Laptops</h1>
+    <div class="container">
+        <!-- Filter Section -->
+        <aside class="filters">
+
+            <img src="../static/image/laptop9-600x315w.jpg" alt="laptop" style="width:200px; height:auto;">
+            <h3>Filters</h3><br>
+            
+            <div class="filter-group">
+                <h4>Price</h4>
+                <label>₹ <span id="min-price">29915</span> - ₹ <span id="max-price">199831</span></label><br>
+                <input type="range" min="29915" max="199831" id="price-range">
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Brands</h4>
+                
+                <!-- DELL Brand -->
+                <label>
+                    <input type="checkbox" value="DELL">
+                    <img src="../static/image/dell.jpg" alt="DELL" style="width:50px; height:auto;">
+                </label><br>
+            
+                <!-- MSI Brand -->
+                <label>
+                    <input type="checkbox" value="MSI">
+                    <img src="../static/image/msi.jpg" alt="MSI" style="width:50px; height:auto;">
+                </label><br>
+            
+                <!-- HP Brand -->
+                <label>
+                    <input type="checkbox" value="HP">
+                    <img src="../static/image/hp.jpg" alt="HP" style="width:50px; height:auto;">
+                </label><br>
+                <!-- ASUS Brand -->
+                <label>
+                    <input type="checkbox" value="ASUS">
+                    <img src="../static/image/asus.jpg" alt="ASUS" style="width:50px; height:auto;">
+                </label><br>
+                <!-- SUMSONG Brand -->
+                <label>
+                    <input type="checkbox" value="SUMSONG">
+                    <img src="../static/image/samsung-150x150.jpg" alt="SUMSONG" style="width:50px; height:auto;">
+                </label><br>
+            </div>
+            
+            <hr>
+            <div class="filter-group">
+                <h4>Graphics Processor</h4>
+                <label><input type="checkbox" value="16 GB">  16 GB</label><br>
+                <label><input type="checkbox" value="4 GB">  4 GB</label><br>
+                <label><input type="checkbox" value="8 GB">  8 GB</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Processor Type</h4>
+                <label><input type="checkbox" value="AMD Ryzen 5">  AMD Ryzen 5</label><br>
+                <label><input type="checkbox" value="Intel Core i3">  Intel Core i3</label><br>
+                <label><input type="checkbox" value="Intel Core i5">  Intel Core i5</label><br>
+                <label><input type="checkbox" value="Intel Core i7">  Intel Core i7</label><br>
+                <label><input type="checkbox" value="Intel Core i9">  Intel Core i9</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Platform</h4>
+                <label><input type="checkbox" value="AMD RYZEN 5"> AMD RYZEN 5</label><br>
+                <label><input type="checkbox" value="AMD RYZEN 7"> AMD RYZEN 7</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Supported Memory Type</h4>
+                <label><input type="checkbox" value="DDR4"> DDR4</label><br>
+                <label><input type="checkbox" value="DDR5"> DDR5</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Manufacturer</h4>
+                <label><input type="checkbox" value="MSI"> MSI</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>GPU</h4>
+                <label><input type="checkbox" value="RTX 2050"> RTX 2050</label><br>
+                <label><input type="checkbox" value="RTX 3050"> RTX 3050</label><br>
+                <label><input type="checkbox" value="RTX 3050 TI"> RTX 3050 TI</label><br>
+                <label><input type="checkbox" value="RTX 3080 TI"> RTX 3080 TI</label><br>
+                <label><input type="checkbox" value="RTX 4060"> RTX 4060</label><br>
+                <label><input type="checkbox" value="RX 6500M"> RX 6500M</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Operating System</h4>
+                <label><input type="checkbox" value="Windows 10"> Windows 10</label><br>
+                <label><input type="checkbox" value="Windows 11"> Windows 11</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Screen Size</h4>
+                <label><input type="checkbox" value="14 inch"> 14 inch</label><br>
+                <label><input type="checkbox" value="15.6 inch"> 15.6 inch</label><br>
+                <label><input type="checkbox" value="17.3 inch"> 17.3 inch</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Storage Type</h4>
+                <label><input type="checkbox" value="SSD"> SSD</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Memory Size</h4>
+                <label><input type="checkbox" value="8 GB"> 8 GB</label><br>
+                <label><input type="checkbox" value="16 GB"> 16 GB</label><br>
+                <label><input type="checkbox" value="32 GB"> 32 GB</label><br>
+            </div>
+            <hr>
+            <div class="filter-group">
+                <h4>Storage Size</h4>
+                <label><input type="checkbox" value="512 GB"> 512 GB</label><br>
+                <label><input type="checkbox" value="1 TB"> 1 TB</label><br>
+                <label><input type="checkbox" value="2 TB"> 2 TB</label><br>
+            </div>
+            <hr>
+        </aside>
+        
+        <!-- Products Section -->
+        <section class="products">
+            <br>
+            <img src="../static/image/laptop8.jpg" alt="laptop" style="width:1000px; height:auto;">
+            <h1 style="background-color: white; color: black; text-align: center;"> Choose the best Laptops in India </h1><br>
+            <div class="product-grid" id="productGrid">
+                <div class="product-card">
+                    <div class="offer-tag">46% OFF</div>
+                    <div class="wishlist-icon">&#x2764;</div>
+                    <div class="product-image-container">
+                        <!-- Link the product image to the details page -->
+                        <a href="product-details.html">
+                            <img src="../static/image/1-250x250_1 copy.jpg" alt="Product" class="product-image">
+                            <img src="../static/image/2-250x250_4 copy.jpg" alt="Product Hover" class="image-hover">
+                        </a>
+                    </div><br>
+                    <!-- Link the product name to the details page -->
+                    <a href="product-details.html" class="product-name">DELL INSPIRON 15-3520 [CI3-1215U 12TH GEN/8GB DDR4/512GB SSD/WI</a>
+                    <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <div class="product-price">
+                        35,300.00 <span class="old-price">₹65,053.00</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="offer-tag">44% OFF</div>
+                    <div class="wishlist-icon">&#x2764;</div>
+                    <div class="product-image-container">
+                        <!-- Link the product image to the details page -->
+                        <a href="product-details.html">
+                            <img src="../static/image/1-250x250_3 copy.jpg" alt="Product" class="product-image">
+                            <img src="../static/image/5-250x250_2 copy.jpg" alt="Product Hover" class="image-hover">
+                        </a>
+                    </div>
+                    <!-- Link the product name to the details page -->
+                    <a href="product-details.html" class="product-name">DELL INSPIRON 15-3520 [CI3-1215U 12TH GEN/8GB DDR4/512GB SSD/WIN</a>
+                    <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <div class="product-price">
+                        ₹23,150.00 <span class="old-price">₹54,000.00</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="offer-tag">57% OFF</div>
+                    <div class="wishlist-icon">&#x2764;</div>
+                    <div class="product-image-container">
+                        <!-- Link the product image to the details page -->
+                        <a href="product-details.html">
+                            <img src="../static/image/1-500x500_9.jpg" alt="Product" class="product-image">
+                            <img src="../static/image/1-500x500_7.jpg" alt="Product Hover" class="image-hover">
+                        </a>
+                    </div>
+                    <!-- Link the product name to the details page -->
+                    <a href="product-details.html" class="product-name">Intel Core i5-14600K 14th Gen 14 Core Upto 5.3GHz LGA1700 Processor</a>
+                    <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <div class="product-price">
+                        ₹23,150.00 <span class="old-price">₹54,000.00</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="offer-tag">57% OFF</div>
+                    <div class="wishlist-icon">&#x2764;</div>
+                    <div class="product-image-container">
+                        <!-- Link the product image to the details page -->
+                        <a href="product-details.html">
+                            <img src="../static/image/1-500x500_9.jpg" alt="Product" class="product-image">
+                            <img src="../static/image/1-500x500_7.jpg" alt="Product Hover" class="image-hover">
+                        </a>
+                    </div>
+                    <!-- Link the product name to the details page -->
+                    <a href="product-details.html" class="product-name">Intel Core i5-14600K 14th Gen 14 Core Upto 5.3GHz LGA1700 Processor</a>
+                    <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <div class="product-price">
+                        ₹23,150.00 <span class="old-price">₹54,000.00</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <!-- Product items will be dynamically displayed here -->
+            </div>
+            <br>
+            <div class="product-grid" id="productGrid">
+                <div class="product-card">
+                    <div class="offer-tag">57% OFF</div>
+                    <div class="wishlist-icon">&#x2764;</div>
+                    <div class="product-image-container">
+                        <!-- Link the product image to the details page -->
+                        <a href="product-details.html">
+                            <img src="../static/image/1-500x500_9.jpg" alt="Product" class="product-image">
+                            <img src="../static/image/1-500x500_7.jpg" alt="Product Hover" class="image-hover">
+                        </a>
+                    </div>
+                    <!-- Link the product name to the details page -->
+                    <a href="product-details.html" class="product-name">Intel Core i5-14600K 14th Gen 14 Core Upto 5.3GHz LGA1700 Processor</a>
+                    <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <div class="product-price">
+                        ₹23,150.00 <span class="old-price">₹54,000.00</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="offer-tag">57% OFF</div>
+                    <div class="wishlist-icon">&#x2764;</div>
+                    <div class="product-image-container">
+                        <!-- Link the product image to the details page -->
+                        <a href="product-details.html">
+                            <img src="../static/image/1-500x500_9.jpg" alt="Product" class="product-image">
+                            <img src="../static/image/1-500x500_7.jpg" alt="Product Hover" class="image-hover">
+                        </a>
+                    </div>
+                    <!-- Link the product name to the details page -->
+                    <a href="product-details.html" class="product-name">Intel Core i5-14600K 14th Gen 14 Core Upto 5.3GHz LGA1700 Processor</a>
+                    <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <div class="product-price">
+                        ₹23,150.00 <span class="old-price">₹54,000.00</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="offer-tag">57% OFF</div>
+                    <div class="wishlist-icon">&#x2764;</div>
+                    <div class="product-image-container">
+                        <!-- Link the product image to the details page -->
+                        <a href="product-details.html">
+                            <img src="../static/image/1-500x500_9.jpg" alt="Product" class="product-image">
+                            <img src="../static/image/1-500x500_7.jpg" alt="Product Hover" class="image-hover">
+                        </a>
+                    </div>
+                    <!-- Link the product name to the details page -->
+                    <a href="product-details.html" class="product-name">Intel Core i5-14600K 14th Gen 14 Core Upto 5.3GHz LGA1700 Processor</a>
+                    <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <div class="product-price">
+                        ₹23,150.00 <span class="old-price">₹54,000.00</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="offer-tag">57% OFF</div>
+                    <div class="wishlist-icon">&#x2764;</div>
+                    <div class="product-image-container">
+                        <!-- Link the product image to the details page -->
+                        <a href="product-details.html">
+                            <img src="../static/image/1-500x500_9.jpg" alt="Product" class="product-image">
+                            <img src="../static/image/1-500x500_7.jpg" alt="Product Hover" class="image-hover">
+                        </a>
+                    </div>
+                    <!-- Link the product name to the details page -->
+                    <a href="product-details.html" class="product-name">Intel Core i5-14600K 14th Gen 14 Core Upto 5.3GHz LGA1700 Processor</a>
+                    <div class="ratings">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <div class="product-price">
+                        ₹23,150.00 <span class="old-price">₹54,000.00</span>
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <!-- Product items will be dynamically displayed here -->
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

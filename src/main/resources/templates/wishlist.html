@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCGalaxy Wishlist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background-color: #004d1a;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .product-section, .wishlist-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .product, .wishlist-item {
+            margin: 0 20px;
+            text-align: center;
+        }
+        .product img, .wishlist-item img {
+            width: 200px;
+            height: auto;
+        }
+        .add-to-wishlist, .remove-from-wishlist {
+            background-color: #004d1a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .remove-from-wishlist {
+            background-color: rgb(78, 204, 215);
+        }
+        .wishlist-section {
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        Welcome to Your Wishlist
+    </div>
+
+    <!-- Wishlist Section -->
+    <div class="wishlist-section">
+        <h2>Your Wishlist</h2>
+        <div id="wishlist-items">
+            <!-- Wishlist items will be injected here -->
+        </div>
+    </div>
+
+    <!-- Inline JavaScript -->
+    <script>
+        // Function to add products to wishlist and store them in localStorage
+        function addToWishlist(id, productName, productImage) {
+            let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+            // Add the new product to the wishlist
+            wishlistItems.push({
+                id: id,
+                name: productName,
+                image: productImage
+            });
+
+            // Save the updated wishlist in localStorage
+            localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+
+            alert(`${productName} added to wishlist!`);
+            displayWishlistItems();  // Update the wishlist display
+        }
+
+        // Function to remove an item from the wishlist by its ID
+        function removeFromWishlist(id) {
+            // Ask for confirmation before removing the item
+            if (confirm("Are you sure you want to remove this product from your wishlist?")) {
+                let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+                // Filter out the item with the matching ID
+                wishlistItems = wishlistItems.filter(item => item.id !== id);
+
+                // Save the updated wishlist in localStorage
+                localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+
+                alert('Item removed from wishlist');
+                displayWishlistItems();  // Update the wishlist display
+            } else {
+                // User clicked cancel, so do nothing
+                alert('Product removal canceled');
+            }
+        }
+
+        // Function to display wishlist items
+        function displayWishlistItems() {
+            let wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+            const wishlistItemsDiv = document.getElementById('wishlist-items');
+
+            // Clear the current wishlist items display
+            wishlistItemsDiv.innerHTML = '';
+
+            if (wishlistItems.length > 0) {
+                wishlistItems.forEach(item => {
+                    const wishlistItemDiv = document.createElement('div');
+                    wishlistItemDiv.className = 'wishlist-item';
+                    wishlistItemDiv.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <p>${item.name}</p>
+                        <button class="remove-from-wishlist" onclick="removeFromWishlist(${item.id})">Remove</button>
+                    `;
+                    wishlistItemsDiv.appendChild(wishlistItemDiv);
+                });
+            } else {
+                wishlistItemsDiv.innerHTML = '<p>Your wishlist is empty.</p>';
+            }
+        }
+
+        // Initial call to display the wishlist items on page load
+        displayWishlistItems();
+    </script>
+
+</body>
+</html>

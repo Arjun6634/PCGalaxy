@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+      /* Footer Container */
+.footer {
+    background-color: #222; /* Dark background for contrast */
+    padding: 10px 0;
+    color: #fff; /* Text color for contrast */
+    font-family: 'Roboto', sans-serif;
+    border-top: 4px solid #007bff; /* Blue accent to match PCGalaxy */
+}
+
+/* Social Icons */
+.socialIcons {
+    text-align: center;
+    margin: 5px 0;
+}
+.socialIcons a {
+    color: #fff;
+    margin-right: 15px;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out, color 0.3s;
+}
+
+.socialIcons a:hover {
+    color: #007bff;
+    transform: scale(1.2);
+}
+
+/* Footer Sections */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex-basis: 20%;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    color: #007bff;
+    font-size: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.footer-section h3::after {
+    content: '';
+    width: 50px;
+    height: 2px;
+    background-color: #007bff;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+/* Sitemap Categories */
+.sitemap-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sitemap-btn i {
+    margin-left: 5px;
+}
+
+#sitemap-categories {
+    list-style: none;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+#sitemap-categories li {
+    margin-bottom: 10px;
+}
+
+#sitemap-categories li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#sitemap-categories li a:hover {
+    color: #007bff;
+}
+
+/* Links Styling */
+.footer-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #007bff;
+}
+
+/* Newsletter */
+.footer-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section form input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-section form button {
+    background-color: #007bff;
+    color: white;
+    border: #222;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.footer-section form button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer Bottom Flexbox */
+.footerBottom {
+    display: flex;
+    justify-content: center; /* Align content to the right */
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+    color: #222;
+}
+
+.footerBottom-right {
+    display: flex;
+    align-items: center; /* Align text and icons in the same line */
+    gap: 20px; /* Space between the text and payment icons */
+}
+
+.footerBottom p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Payment Methods Styling */
+.payment-methods {
+    display: flex;
+    gap: 10px; /* Space between the payment method icons */
+}
+
+.payment-methods img {
+    width: 40px; /* Set the width of payment icons */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.payment-methods img:hover {
+    transform: scale(1.1); /* Slight hover effect */
+}
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       function toggleSitemap() {
+    var sitemap = document.getElementById("sitemap-categories");
+    sitemap.style.display = (sitemap.style.display === "none") ? "block" : "none";
+}
+
+      </script>
+      
+</body>
+<footer>
+    <!-- Social Icons -->
+    <div class="footer container">
+        <div class="socialIcons">
+            <a href="https://www.facebook.com/story.php/?story_fbid=891691659644444&id=100064108537216" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://x.com/settings/account?lang=en" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/vedas-rapshtech-private-limited/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://wa.me/8639889209?text=Hello How can I help you?" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <!-- Footer Content -->
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="/delivary">Delivery</a></li>
+                <li><a href="/pri&pol">Privacy Policy</a></li>
+                <li><a href="/term&cond">Terms & Conditions</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>My Account</h3>
+            <ul>
+                <li><a href="/myAcc">My Account</a></li>
+                <li><a href="/orderHis">Order History</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>4th floor, LP Towers, Huda Techno Enclave Rd, Hi-Tech City, Hyd-500 081</p>
+        </div>
+
+        <!-- Sitemap Section with Toggle Button -->
+        <div class="footer-section">
+            <h3><button class="sitemap-btn" onclick="toggleSitemap()">Sitemap </button></h3>
+            <ul id="sitemap-categories" style="display: none;">
+                <li><a href="#">Laptops</a></li>
+                <li><a href="#">Desktops</a></li>
+                <li><a href="#">Printers</a></li>
+                <li><a href="#">Accessories</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Newsletter</h3>
+            <form>
+                <input type="email" placeholder="Your email" required>
+                <button type="submit"><i class="fa-regular fa-envelope"></i> SEND</button>
+                <label><input type="checkbox" required> I agree to the Terms & Conditions</label>
+            </form>
+        </div>
+    </div>
+    <!-- Footer Bottom Section -->
+    <div class="footerBottom">
+        <div class="footerBottom-right">
+            <p>© 2022-23, PC Galaxy. All Rights Reserved.</p>
+            <div class="payment-methods">
+                <img src="../static/image/visa.png" alt="Visa">
+                <img src="../static/image/mastercard.png" alt="Mastercard">
+                <img src="../static/image/paypal.png" alt="PayPal">
+                <img src="../static/image/amozone.png" alt="American Express">
+            </div>
+        </div>
+    </div>
+</footer>
+
+  
+</html>
